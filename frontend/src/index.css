@@ -56,17 +56,6 @@ header a {
   font-size: 0.9em;
   color: #555;
 }
-.workout-details span {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  cursor: pointer;
-  background: #f1f1f1;
-  padding: 6px;
-  border-radius: 50%;
-  color: #333;
-}
-
 /* new workout form */
 label, input {
   display: block;
@@ -99,4 +88,99 @@ div.error {
 }
 input.error {
   border: 1px solid var(--error);
+}
+.workout-actions {
+  display: flex;
+  justify-content: flex-end; /* aligns to the right */
+  gap: 12px; /* space between icons */
+  margin-top: 0px;
+  align-items: center;
+}
+.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+.workout-details {
+  background: #fefefe;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 1em;
+  margin-bottom: 1em;
+  position: relative; /* necessary for absolute children */
+}
+.edit-form {
+  margin-top: 12px;
+}
+.edit-form input {
+  margin-bottom: 10px;
+}
+.edit-form button {
+  background-color: #1aac83;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.save-icon {
+  cursor: pointer;
+  color: #1aac83;
+  font-size: 48px;
+  width: 120px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  line-height: 1;
+}
+.cancel-icon {
+  cursor: pointer;
+  color: #e7195a;
+  font-size: 48px;
+  width: 40px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  line-height: 1;
+}
+.edit-icon {
+ position: absolute;
+  top: 12px;
+  right: 12px;
+  cursor: pointer;
+  color: #0077cc;
+  font-size: 48px;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  z-index: 2; /* ensures it floats above other content */
+}
+.delete-icon {
+  cursor: pointer;
+  color: red;
+  font-size: 48px;
+  width: 40px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  line-height: 1;
+  
+}
+.drag-icon {
+  position: absolute;
+  top: 50%;               /* center vertically */
+  left: -100px;            /* slightly outside left edge */
+  transform: translateY(-50%);
+  cursor: grab;
+  font-size: 96px;
+  color: #888;
+  
 }

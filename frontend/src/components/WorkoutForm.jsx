@@ -8,10 +8,22 @@ const WorkoutForm = () => {
     const [reps, setReps] = useState('')
     const [error, setError] = useState(null)
     const [emptyfields, setEmptyfields] = useState([])
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
 
     const handleSubmit = async(e) => {
         e.preventDefault()
+        if (!title || !weight || !reps) {
+            setError('Please fill in all fields')
+            setEmptyFields([
+                ...(!title ? ['title'] : []),
+                ...(!weight ? ['weight'] : []),
+                ...(!reps ? ['reps'] : []),
+            ])
+            return
+        }
 
+        setIsSubmitting(true);
         const workout = {title, weight, reps}
 
         const response = await fetch('/api/workouts', {
@@ -37,6 +49,7 @@ const WorkoutForm = () => {
             console.log('New workout added', json)
             dispatch({type: 'CREATE_WORKOUT', payload: json})
         }
+        setIsSubmitting(false);
     }
     return(
         <form className="create" onSubmit={handleSubmit}>
@@ -66,7 +79,9 @@ const WorkoutForm = () => {
                 className={emptyfields.includes('reps') ? 'error': ''}
 
             />
-            <button>Add Workout</button>
+            <button disabled={isSubmitting}>
+                {isSubmitting ? 'Adding...' : 'Add Workout'}
+            </button>   
             {error && <div className="error">{error}</div>}
         </form>
         
